@@ -10,12 +10,14 @@
 import CityHeader from './components/header'
 import CitySearch from './components/search'
 import CityList from './components/list'
+import CityAlphabet from './components/alphabet'
 export default {
   name: 'City',
   components: {
     CityHeader,
     CitySearch,
-    CityList
+    CityList,
+    CityAlphabet
   }
 }
 </script>
