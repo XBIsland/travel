@@ -3,7 +3,7 @@
     <div class="title">周末去哪儿</div>
     <ul>
       <li class="item border-bottom"
-      v-for="item of recommendList"
+      v-for="item of list"
       :key="item.id"
       >
         <div class="item-img-warpper">
@@ -21,25 +21,8 @@
 <script>
 export default {
   name: 'HomeWeekend',
-  data () {
-    return {
-      recommendList: [{
-        id: '0001',
-        imgUrl: 'http://img1.qunarzz.com/sight/source/1505/92/580e9ea4f37a1b.jpg_r_640x214_72112761.jpg',
-        title: '广州必游TOP10',
-        desc: '感受现代与传统相融合的广州'
-      }, {
-        id: '0002',
-        imgUrl: 'http://img1.qunarzz.com/sight/source/1505/92/580e9ea4f37a1b.jpg_r_640x214_72112761.jpg',
-        title: '广州必游TOP10',
-        desc: '感受现代与传统相融合的广州'
-      }, {
-        id: '0003',
-        imgUrl: 'http://img1.qunarzz.com/sight/source/1505/92/580e9ea4f37a1b.jpg_r_640x214_72112761.jpg',
-        title: '广州必游TOP10',
-        desc: '感受现代与传统相融合的广州'
-      }]
-    }
+  props: {
+    list: Array
   }
 }
 </script>
@@ -50,7 +33,6 @@ export default {
   line-height: .8rem
   background: #eee
   text-indent: .2rem
-  margin-top: .2rem
 .item-img-warpper
   overflow: hidden
   height: 0
