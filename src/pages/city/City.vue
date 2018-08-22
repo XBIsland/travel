@@ -1,7 +1,9 @@
 <template>
   <div>
     <city-header></city-header>
-    <city-search :cities="cities"></city-search>
+    <city-search :cities="cities" @handleFocus="handleFocus"
+      @handleBlur="handleBlur"
+    ></city-search>
     <city-list
       :cities="cities"
       :hot="hotCities"
@@ -10,6 +12,7 @@
     <city-alphabet
       :cities="cities"
       @change="hangleLetterChange"
+      :showAlp = "showAlp"
     ></city-alphabet>
   </div>
 </template>
@@ -32,7 +35,8 @@ export default {
     return {
       cities: {},
       hotCities: [],
-      letter: ''
+      letter: '',
+      showAlp: true
     }
   },
   methods: {
@@ -49,6 +53,12 @@ export default {
     },
     hangleLetterChange (letter) {
       this.letter = letter
+    },
+    handleFocus () {
+      this.showAlp = false
+    },
+    handleBlur () {
+      this.showAlp = true
     }
   },
   mounted () {

@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="search">
-      <input v-model="keyword" class="search-input" type="text" placeholder="输入城市名或拼音">
+      <input v-model="keyword" class="search-input" type="text" placeholder="输入城市名或拼音" @focus="handleFocus" @blur="handleBlur">
     </div>
     <div class="search-content" ref="search" v-show="keyword">
       <ul>
@@ -59,9 +59,17 @@ export default {
     }
   },
   mounted () {
-    this.scroll = new BScroll(this.$refs.search)
+    this.scroll = new BScroll(this.$refs.search, {click: true})
   },
   methods: {
+    handleFocus () {
+      this.$emit('handleFocus', false)
+    },
+    handleBlur () {
+      setTimeout(() => {
+        this.$emit('handleBlur', true)
+      }, 200)
+    },
     handleCityClick (city) {
       this.changeCity(city)
       this.$router.push('/')

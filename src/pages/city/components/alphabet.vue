@@ -4,10 +4,11 @@
         v-for="item of letters"
         :key="item"
         :ref="item"
-        @touchstart="handleTouchStart"
+        @touchstart.prevent="handleTouchStart"
         @touchmove="handleTouchMove"
         @touchend="handleTouchEnd"
         @click="handleLetterClick"
+        v-show="showAlp"
     >{{item}}</li>
   </ul>
 </template>
@@ -16,7 +17,8 @@
 export default {
   name: 'CityAlphabet',
   props: {
-    cities: Object
+    cities: Object,
+    showAlp: Boolean
   },
   computed: {
     letters () {
@@ -74,10 +76,10 @@ export default {
   justify-content: center
   position: absolute
   top: 1.58rem
-  right: 0
+  right: .4rem
   bottom: 0
   color: $bgColor
-  width: .4rem
+  width: .1rem
   .item
     text-align: center
     line-height: .4rem
